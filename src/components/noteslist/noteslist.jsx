@@ -20,6 +20,7 @@ const NotesList = () => {
     title: '',
     content: '',
     shared_with: [],
+    date: new Date().toISOString(),
   });
   const [users, setUsers] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
@@ -99,12 +100,26 @@ const NotesList = () => {
     e.preventDefault();
     setLoading(true);
     try {
+      const currentDate = new Date().toISOString();
       const response = await axiosApi.post('/notes', {
         ...newNote,
+        date: currentDate,
         shared_with: selectedUsers.map(user => user.value),
       });
-      setNotes([response, ...notes]);
-      setNewNote({ title: '', content: '', shared_with: [] });
+      
+      const formattedDate = format(new Date(currentDate), "MMM d, HH:mm");
+      const noteWithFormattedDate = {
+        ...response,
+        formattedDate,
+      };
+
+      setNotes([noteWithFormattedDate, ...notes]);
+      setNewNote({ 
+        title: '', 
+        content: '', 
+        shared_with: [],
+        date: new Date().toISOString() 
+      });
       setSelectedUsers([]);
       setFormMode('');
     } catch (error) {
@@ -119,13 +134,22 @@ const NotesList = () => {
     e.preventDefault();
     setLoading(true);
     try {
+      const currentDate = new Date().toISOString();
       const updatedNote = {
         ...editingNote,
+        date: currentDate,
         shared_with: selectedUsers.map(user => user.value)
       };
       const response = await axiosApi.put(`/notes/${editingNote.id}`, updatedNote);
+      
+      const formattedDate = format(new Date(currentDate), "MMM d, HH:mm");
+      const noteWithFormattedDate = {
+        ...response,
+        formattedDate,
+      };
+
       setNotes(notes.map(note => 
-        note.id === editingNote.id ? response : note
+        note.id === editingNote.id ? noteWithFormattedDate : note
       ));
       setEditingNote(null);
       setSelectedUsers([]);
