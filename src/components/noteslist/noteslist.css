@@ -1,16 +1,15 @@
 :root {
   /* Dark Theme Color Palette */
-  
   --bg-primary: #121212;
-  --bg-secondary: #1E1E1E;
-  --text-primary: #E0E0E0;
-  --text-secondary: #A0A0A0;
-  --accent-primary: #4A90E2;
-  --accent-secondary: #6B48FF;
-  --border-color: #2C2C2C;
+  --bg-secondary: #1e1e1e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --accent-primary: #4a90e2;
+  --accent-secondary: #6b48ff;
+  --border-color: #2c2c2c;
   --shadow-color: rgba(0, 0, 0, 0.3);
-  --font-primary: 'Roboto', sans-serif; 
-  --font-secondary: 'Poppins', sans-serif; 
+  --font-primary: 'Roboto', sans-serif;
+  --font-secondary: 'Poppins', sans-serif;
 }
 
 body {
@@ -27,14 +26,18 @@ body {
   padding: 2rem;
 }
 
-input, textarea, .select__control {
+input,
+textarea,
+.select__control {
   background-color: var(--bg-secondary) !important;
   border-color: var(--border-color) !important;
   color: var(--text-primary) !important;
   transition: all 0.3s ease;
 }
 
-input:focus, textarea:focus, .select__control:focus {
+input:focus,
+textarea:focus,
+.select__control:focus {
   border-color: var(--accent-primary) !important;
   box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2) !important;
 }
@@ -51,10 +54,10 @@ input:focus, textarea:focus, .select__control:focus {
 }
 
 button {
-  transition: all 0.3s ease;
-  background-color: var(--accent-primary);
   position: relative;
   overflow: hidden;
+  background-color: var(--accent-primary);
+  transition: all 0.3s ease;
 }
 
 button:before {
@@ -64,7 +67,12 @@ button:before {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
   transition: all 0.5s ease;
 }
 
@@ -86,7 +94,8 @@ button:disabled {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.bg-blue-500, .bg-red-500 {
+.bg-blue-500,
+.bg-red-500 {
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)) !important;
 }
 
@@ -133,32 +142,39 @@ button:disabled {
 
 /* Subtle Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .grid > div {
   animation: fadeIn 0.5s ease;
 }
+
 .notes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
   padding: 2rem;
   opacity: 0;
-  transform: translateY(20px); 
-  transition: opacity 0.9s ease, transform 0.9s ease; 
+  transform: translateY(20px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
 }
 
 .notes-grid.visible {
   opacity: 1;
-  transform: translateY(0); 
+  transform: translateY(0);
 }
 
 .note-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #E0E0E0;
+  color: #e0e0e0;
   margin-bottom: 1rem;
   word-wrap: break-word;
   font-family: var(--font-secondary);
@@ -166,7 +182,7 @@ button:disabled {
 
 .note-content {
   position: relative;
-  color: #A0A0A0;
+  color: #a0a0a0;
   line-height: 1.5;
   word-wrap: break-word;
   margin-bottom: 2rem;
@@ -175,66 +191,68 @@ button:disabled {
 
 .note-actions {
   position: absolute;
-  bottom: 1rem;
   right: 1rem;
+  bottom: 1rem;
   display: flex;
   gap: 0.5rem;
   align-items: center;
   justify-content: center;
 }
+
 .note-actions img {
   width: 15px;
   height: 15px;
   margin-right: 0.5rem;
 }
 
-.edit-button, .delete-button {
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  font-size: 0.875rem;
-  color: white;
-  transition: all 0.2s ease;
+.edit-button,
+.delete-button {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .edit-button {
-  background: #4A90E2;
+  background: #4a90e2;
 }
 
 .delete-button {
   background: #dc3545;
 }
 
-.edit-button:hover, .delete-button:hover {
+.edit-button:hover,
+.delete-button:hover {
   transform: translateY(-2px);
   filter: brightness(1.1);
 }
-
 
 /* Modal styling */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(4px);
-  z-index: 1000;
 }
 
 .modal-content {
-  background: #1E1E1E;
-  padding: 2rem;
-  border-radius: 8px;
   width: 90%;
   max-width: 500px;
-  border: 1px solid #2C2C2C;
+  padding: 2rem;
+  background: #1e1e1e;
+  border: 1px solid #2c2c2c;
+  border-radius: 8px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
@@ -242,23 +260,23 @@ button:disabled {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
-  border-radius: 6px;
-  border: 1px solid #2C2C2C;
   background: #121212;
-  color: #E0E0E0;
+  border: 1px solid #2c2c2c;
+  border-radius: 6px;
+  color: #e0e0e0;
 }
 
 .form-input:focus {
-  border-color: #4A90E2;
+  border-color: #4a90e2;
   outline: none;
   box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
 .shared-users {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   margin: 1rem 0;
-  flex-wrap: wrap;
 }
 
 .shared-users::-webkit-scrollbar {
@@ -266,20 +284,20 @@ button:disabled {
 }
 
 .shared-user-initial {
-  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
-  font-weight: 600;
-  user-select: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 1.65rem;
   height: 1.65rem;
-  border-radius: 50%;
-  color: #333;
   margin-left: -0.4rem;
-  margin-top: -0.6rem;
+  margin-top: -0.9rem;
   border: 2px solid var(--bg-secondary);
+  border-radius: 50%;
   flex-shrink: 0;
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  font-weight: 600;
+  color: #333;
+  user-select: none;
 }
 
 .shared-user-initial:first-child {
@@ -291,50 +309,77 @@ button:disabled {
   padding-right: 0.1rem;
 }
 
-.shared-user-initial[data-index="0"] { background-image: linear-gradient(135deg, #FF9B9B, #FF7676); }
-.shared-user-initial[data-index="1"] { background-image: linear-gradient(135deg, #9BE6FF, #76D6FF); }
-.shared-user-initial[data-index="2"] { background-image: linear-gradient(135deg, #B9FF9B, #96FF76); }
-.shared-user-initial[data-index="3"] { background-image: linear-gradient(135deg, #FFE59B, #FFD976); }
-.shared-user-initial[data-index="4"] { background-image: linear-gradient(135deg, #DCA0FF, #BE76FF); }
-.shared-user-initial[data-index="5"] { background-image: linear-gradient(135deg, #FF9BE2, #FF76D6); }
-.shared-user-initial[data-index="6"] { background-image: linear-gradient(135deg, #9BFFF0, #76FFE6); }
-.shared-user-initial[data-index="7"] { background-image: linear-gradient(135deg, #FFC59B, #FFAE76); }
+.shared-user-initial[data-index='0'] {
+  background-image: linear-gradient(135deg, #ff9b9b, #ff7676);
+}
+
+.shared-user-initial[data-index='1'] {
+  background-image: linear-gradient(135deg, #9be6ff, #76d6ff);
+}
+
+.shared-user-initial[data-index='2'] {
+  background-image: linear-gradient(135deg, #b9ff9b, #96ff76);
+}
+
+.shared-user-initial[data-index='3'] {
+  background-image: linear-gradient(135deg, #ffe59b, #ffd976);
+}
+
+.shared-user-initial[data-index='4'] {
+  background-image: linear-gradient(135deg, #dca0ff, #be76ff);
+}
+
+.shared-user-initial[data-index='5'] {
+  background-image: linear-gradient(135deg, #ff9be2, #ff76d6);
+}
+
+.shared-user-initial[data-index='6'] {
+  background-image: linear-gradient(135deg, #9bfff0, #76ffe6);
+}
+
+.shared-user-initial[data-index='7'] {
+  background-image: linear-gradient(135deg, #ffc59b, #ffae76);
+}
 
 .note-card.has-shared-users {
   min-height: 250px;
 }
 
-.show-more-btn, 
+.show-more-btn,
 .show-more-users-btn {
+  z-index: 10;
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.5rem;
   background: none;
   border: none;
   color: var(--text-primary);
-  cursor: pointer;
   font-size: 0.875rem;
-  padding: 0.25rem 0.5rem;
-  margin-left: 0.5rem;
+  cursor: pointer;
   transition: color 0.2s ease;
-  z-index: 10;
 }
 
-.show-more-btn:hover, 
+.show-more-btn:hover,
 .show-more-users-btn:hover {
   color: var(--text-secondary);
   text-decoration: underline;
 }
 
-.show-more-users-btn, .show-less-users-btn {
+.show-more-users-btn,
+.show-less-users-btn {
+  padding: 0.25rem 0.5rem;
+  margin-left: -0.75rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
   background: none;
   border: none;
   color: var(--accent-primary);
+  font-size: 0.8rem;
   cursor: pointer;
-  font-size: 0.875rem;
-  padding: 0.25rem 0.5rem;
-  margin-left: 0.5rem;
   transition: color 0.2s ease;
 }
 
-.show-more-users-btn:hover, .show-less-users-btn:hover {
+.show-more-users-btn:hover,
+.show-less-users-btn:hover {
   color: var(--accent-secondary);
   text-decoration: underline;
 }
@@ -354,11 +399,13 @@ button:disabled {
 .search-input {
   width: 90%;
   padding: 0.75rem;
-  border-radius: 6px;
-  border: 1px solid var(--border-color);
   background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
   color: var(--text-primary);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .search-input:focus {
@@ -367,20 +414,24 @@ button:disabled {
   box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
-.add-button, .my-notes-button {
-  background-color: var(--accent-primary);
-  color: white;
-  padding: 0.75rem 1.5rem;
+.add-button,
+.my-notes-button {
   margin-top: 1rem;
   margin-left: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent-primary);
   border: none;
   border-radius: 6px;
+  color: white;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
 }
 
-.add-button:hover, .my-notes-button:hover {
+.add-button:hover,
+.my-notes-button:hover {
   background-color: var(--accent-secondary);
   transform: translateY(-2px);
 }
@@ -392,29 +443,34 @@ button:disabled {
 
 /* Button Group Styling */
 .button-group {
-  display: flex; 
-  gap: 0.5rem; 
-  justify-content: center; 
-  margin: 1rem 0; 
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
 }
 
 /* Card Styling */
 .note-card {
+  position: relative;
+  z-index: 0;
+  min-height: 200px;
+  padding: 2rem;
   background: linear-gradient(
     to bottom right,
     rgb(20, 20, 20) 5%,
     black 95%
   );
-  min-height: 200px;
-  color: var(--text-primary);
-  padding: 2rem;
-  border-radius: 16px;
   border: 1px solid var(--border-color);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  position: relative;
+  border-radius: 16px;
+  color: var(--text-primary);
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.15),
+    0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  z-index: 0;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
 }
 
 /* Card Background Effects */
@@ -423,44 +479,47 @@ button:disabled {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -1;
   width: 120%;
   height: 120%;
-  z-index: -1;
-  transition: opacity 0.3s ease, transform 0.3s ease;
   transform: scale(0.9);
   opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .note-card:hover::before {
   transform: scale(1.2);
   opacity: 1;
 }
+
 .note-card:hover {
   transform: scale(1.02);
-  box-shadow: 0 10px 20px var(--shadow-color);
   border: 1px solid var(--accent-primary);
+  box-shadow: 0 10px 20px var(--shadow-color);
 }
+
 .timestamp {
   position: absolute;
   top: 0;
   right: 0;
+  margin-top: 0.5rem;
   margin-right: 1rem;
-  margin-top: 1rem;
-  color: #6b7280; 
-  font-size: 0.7rem; 
-  font-weight: 400; 
-  margin-top: 0.5rem; 
-  text-align: right; 
-  opacity: 0.8; 
-  transition: opacity 0.2s ease; 
+  color: #6b7280;
+  text-align: right;
+  font-size: 0.7rem;
+  font-weight: 400;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
 }
 
 .timestamp:hover {
-  opacity: 1; 
+  opacity: 1;
 }
 
 .timestamp::before {
-  content: '🕒'; 
+  content: '🕒';
   margin-right: 0.25rem;
   font-size: 0.675rem;
   opacity: 0.6;
