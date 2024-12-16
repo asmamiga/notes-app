@@ -1,0 +1,491 @@
+:root {
+  /* Dark Theme Color Palette */
+  
+  --bg-primary: #121212;
+  --bg-secondary: #1E1E1E;
+  --text-primary: #E0E0E0;
+  --text-secondary: #A0A0A0;
+  --accent-primary: #4A90E2;
+  --accent-secondary: #6B48FF;
+  --border-color: #2C2C2C;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --font-primary: 'Roboto', sans-serif; 
+  --font-secondary: 'Poppins', sans-serif; 
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  transition: background-color 0.3s ease;
+}
+
+.p-4 {
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+input, textarea, .select__control {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, .select__control:focus {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2) !important;
+}
+
+.bg-white {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease;
+}
+
+.bg-white:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px var(--shadow-color);
+}
+
+button {
+  transition: all 0.3s ease;
+  background-color: var(--accent-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: all 0.5s ease;
+}
+
+button:hover:before {
+  left: 100%;
+}
+
+button:hover {
+  filter: brightness(1.2);
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fixed.inset-0 {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.bg-blue-500, .bg-red-500 {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)) !important;
+}
+
+.text-sm {
+  color: var(--text-secondary);
+}
+
+.text-blue-600 {
+  color: var(--accent-primary) !important;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary);
+}
+
+/* Select Dropdown Customization */
+.select__menu {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+.select__option {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+.select__option:hover {
+  background-color: rgba(74, 144, 226, 0.2) !important;
+}
+
+/* Subtle Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.grid > div {
+  animation: fadeIn 0.5s ease;
+}
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(20px); 
+  transition: opacity 0.9s ease, transform 0.9s ease; 
+}
+
+.notes-grid.visible {
+  opacity: 1;
+  transform: translateY(0); 
+}
+
+.note-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #E0E0E0;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+  font-family: var(--font-secondary);
+}
+
+.note-content {
+  position: relative;
+  color: #A0A0A0;
+  line-height: 1.5;
+  word-wrap: break-word;
+  margin-bottom: 2rem;
+  font-family: var(--font-primary);
+}
+
+.note-actions {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+.note-actions img {
+  width: 15px;
+  height: 15px;
+  margin-right: 0.5rem;
+}
+
+.edit-button, .delete-button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: white;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.edit-button {
+  background: #4A90E2;
+}
+
+.delete-button {
+  background: #dc3545;
+}
+
+.edit-button:hover, .delete-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+
+/* Modal styling */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #1E1E1E;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  border: 1px solid #2C2C2C;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid #2C2C2C;
+  background: #121212;
+  color: #E0E0E0;
+}
+
+.form-input:focus {
+  border-color: #4A90E2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.shared-users {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.shared-users::-webkit-scrollbar {
+  display: none;
+}
+
+.shared-user-initial {
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  font-weight: 600;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 50%;
+  color: #333;
+  margin-left: -0.4rem;
+  margin-top: -0.6rem;
+  border: 2px solid var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.shared-user-initial:first-child {
+  margin-left: 0;
+}
+
+.shared-label {
+  margin-right: 0.5rem;
+  padding-right: 0.1rem;
+}
+
+.shared-user-initial[data-index="0"] { background-image: linear-gradient(135deg, #FF9B9B, #FF7676); }
+.shared-user-initial[data-index="1"] { background-image: linear-gradient(135deg, #9BE6FF, #76D6FF); }
+.shared-user-initial[data-index="2"] { background-image: linear-gradient(135deg, #B9FF9B, #96FF76); }
+.shared-user-initial[data-index="3"] { background-image: linear-gradient(135deg, #FFE59B, #FFD976); }
+.shared-user-initial[data-index="4"] { background-image: linear-gradient(135deg, #DCA0FF, #BE76FF); }
+.shared-user-initial[data-index="5"] { background-image: linear-gradient(135deg, #FF9BE2, #FF76D6); }
+.shared-user-initial[data-index="6"] { background-image: linear-gradient(135deg, #9BFFF0, #76FFE6); }
+.shared-user-initial[data-index="7"] { background-image: linear-gradient(135deg, #FFC59B, #FFAE76); }
+
+.note-card.has-shared-users {
+  min-height: 250px;
+}
+
+.show-more-btn, 
+.show-more-users-btn {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.5rem;
+  transition: color 0.2s ease;
+  z-index: 10;
+}
+
+.show-more-btn:hover, 
+.show-more-users-btn:hover {
+  color: var(--text-secondary);
+  text-decoration: underline;
+}
+
+.show-more-users-btn, .show-less-users-btn {
+  background: none;
+  border: none;
+  color: var(--accent-primary);
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.show-more-users-btn:hover, .show-less-users-btn:hover {
+  color: var(--accent-secondary);
+  text-decoration: underline;
+}
+
+.shared-users-container {
+  margin: 1rem 0;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.search-input {
+  width: 90%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: var(--accent-primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.add-button, .my-notes-button {
+  background-color: var(--accent-primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-button:hover, .my-notes-button:hover {
+  background-color: var(--accent-secondary);
+  transform: translateY(-2px);
+}
+
+.add-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Button Group Styling */
+.button-group {
+  display: flex; 
+  gap: 0.5rem; 
+  justify-content: center; 
+  margin: 1rem 0; 
+}
+
+/* Card Styling */
+.note-card {
+  background: linear-gradient(
+    to bottom right,
+    rgb(20, 20, 20) 5%,
+    black 95%
+  );
+  min-height: 200px;
+  color: var(--text-primary);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Card Background Effects */
+.note-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 120%;
+  z-index: -1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.note-card:hover::before {
+  transform: scale(1.2);
+  opacity: 1;
+}
+.note-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px var(--shadow-color);
+  border: 1px solid var(--accent-primary);
+}
+.timestamp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  color: #6b7280; 
+  font-size: 0.7rem; 
+  font-weight: 400; 
+  margin-top: 0.5rem; 
+  text-align: right; 
+  opacity: 0.8; 
+  transition: opacity 0.2s ease; 
+}
+
+.timestamp:hover {
+  opacity: 1; 
+}
+
+.timestamp::before {
+  content: '🕒'; 
+  margin-right: 0.25rem;
+  font-size: 0.675rem;
+  opacity: 0.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .timestamp {
+    font-size: 0.625rem; 
+  }
+}
+
+.custom-select .select__multi-value {
+    background-color: rgb(32, 52, 83); 
+}
+
+.custom-select .select__multi-value__label {
+    color: white; 
+}
+
+.custom-select .select__multi-value__remove {
+    color: white; 
+}
+
+.custom-select .select__multi-value__remove:hover {
+    background-color: transparent; 
+    color: rgb(231, 116, 116); 
+}

@@ -1,0 +1,52 @@
+:root {
+  /* Light Theme Color Palette */
+  --bg-primary: #FFF9F0;
+  --bg-secondary: #FFFFFF;
+  --text-primary: #121212;
+  --text-secondary: #6B7280;
+  --accent-primary: #4A90E2;
+  --accent-secondary: #6B48FF;
+  --border-color: #E5E7EB;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode {
+  --bg-primary: #121212;
+  --bg-secondary: #1E1E1E;
+  --text-primary: #E0E0E0;
+  --text-secondary: #A0A0A0;
+  --accent-primary: #4A90E2;
+  --accent-secondary: #6B48FF;
+  --border-color: #2C2C2C;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Add any additional styles for dark mode here */
+
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+  }
+  
+  .theme-toggle {
+    background-color: var(--accent-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .theme-toggle:hover {
+    transform: translateY(-2px);
+  }
+  
+  .theme-toggle.dark-mode {
+    background-color: var(--accent-secondary);
+  }
